@@ -9,14 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
-
-
-
-
-
-
-
-
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -29,6 +21,7 @@ import cucumber.api.java.en.When;
 
 public class stepDefs {
  WebDriver driver;
+	//static String URL1;
 	static String URL1;
 	static String URL2;
 	public ExtentReports report;
@@ -50,6 +43,7 @@ public class stepDefs {
 	    // Write code here that turns the phrase above into concrete actions
 		test.log(LogStatus.INFO, "Correct Web Address");
 		driver.get("http://www.practiceselenium.com/welcome.html");
+		//assertTrue(!Constants.URL1==driver.getCurrentUrl());
 	}
 
 	@When("^I navigate to the 'Menu' page$")
@@ -57,8 +51,7 @@ public class stepDefs {
 	    // Write code here that turns the phrase above into concrete actions
 		test.log(LogStatus.INFO, "Nav to Menu");
 		MenuPage page = PageFactory.initElements(driver, MenuPage.class);
-		page.clickMenu(driver);
-		
+		page.clickMenu(driver);		
 		
 		//String text = x.getText();
 	}
