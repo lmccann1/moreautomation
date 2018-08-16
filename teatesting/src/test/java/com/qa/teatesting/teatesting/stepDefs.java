@@ -1,5 +1,4 @@
 package com.qa.teatesting.teatesting;
-
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -27,7 +26,6 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
 
 public class stepDefs {
  WebDriver driver;
@@ -66,17 +64,19 @@ public class stepDefs {
 	}
 	@Then("^I can browse a list of the available products\\.$")
 	public void i_can_browse_a_list_of_the_available_products()  {
-		test.log(LogStatus.PASS, "Browse");
+		if(Constants.URL1==driver.getCurrentUrl()){
+			test.log(LogStatus.PASS, "Browse");
+		}
+		else{
+			test.log(LogStatus.FAIL, "not able to Browse");
+		}
+		
 	    // Write code here that turns the phrase above into concrete actions
 		//driver.get("http://www.practiceselenium.com/menu.html");
 		//URL1 = driver.getCurrentUrl();
 		
-	
-		
-	
 		assertTrue(!Constants.URL1.equals(driver.getCurrentUrl()));
 		
-	
 	}
 
 	@When("^I click the checkout button$")
@@ -95,12 +95,16 @@ public class stepDefs {
 	public void i_am_taken_to_the_checkout_page() {
 	    // Write code here that turns the phrase above into concrete actions
 	//	URL2 = driver.getCurrentUrl();
-		test.log(LogStatus.PASS, "taken to checkout");
-
-	
 		
-		assertTrue(!Constants.URL2.equals(driver.getCurrentUrl()));
+		if(Constants.URL2==driver.getCurrentUrl()){
+		test.log(LogStatus.PASS, "taken to checkout");
+		}
+		else{
+		test.log(LogStatus.FAIL, "not taken to checkout");
+		}
 	
+		assertTrue(!Constants.URL2.equals(driver.getCurrentUrl()));
+
 	}
 	@After
 	public void teardown(){
